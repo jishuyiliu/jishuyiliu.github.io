@@ -24,6 +24,9 @@ jobs:
   # This workflow contains a single job called "build"
   build_and_deploy:
     runs-on: ubuntu-latest
+    permissions:
+      pages: wirte
+      id-token: write
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout 
