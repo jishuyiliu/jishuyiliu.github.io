@@ -31,7 +31,7 @@ jobs:
 
       # Runs a single command using the runners shell. Run a one-line script
       - name: Build
-        run: npm install && npm run build
+        run: npm config rm proxy && npm config rm https-proxy && npm install && npm run build
 
       # 部署
       - name: Deploy GitHub Pages Site
