@@ -1,0 +1,30 @@
+name: Deploy GitHub Pages
+
+# 触发条件
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 执行的任务
+jobs:
+  # This workflow contains a single job called "build"
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout 
+        uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell. Run a one-line script
+      - name: Build
+        run: npm install && npm run build
+
+      # 部署
+      - name: Deploy GitHub Pages Site
+        uses: actions/deploy-pages@v2.0.2
+        with:
+          ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
+          BRANCH: gh-pages
+          FOLDER: docs/.vuepress/dist
