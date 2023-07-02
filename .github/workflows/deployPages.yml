@@ -43,6 +43,7 @@ jobs:
           npm config rm proxy && npm config rm https-proxy 
           npm config get proxy
           npm config set registry http://mirrors.cloud.tencent.com/npm/
+          npm cache verify
           npm install && npm run build
 
       # 部署
